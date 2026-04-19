@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday 🎂</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 18px;
+  border-radius: 25px;
+  border: none;
+  background: white;
+  color: #ff4d6d;
+  cursor: pointer;
+}
+
+.hidden { display: none; }
+
+.heart {
+  position: absolute;
+  font-size: 20px;
+  animation: fly 5s linear infinite;
+}
+
+@keyframes fly {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100vh); }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3">
+</audio>
+
+<div class="box" id="start">
+  <h1>🎁 Có một điều dành riêng cho chị...</h1>
+  <button onclick="start()">Mở quà</button>
+</div>
+
+<div class="box hidden" id="main">
+  <h1>🎉 Happy Birthday chị Sunny 🎉</h1>
+  <p>
+    Dù em không ở cạnh,<br>
+    nhưng vẫn muốn gửi đến chị<br>
+    một bất ngờ nhỏ 💖<br><br>
+
+    Chúc chị luôn vui vẻ 😄<br>
+    Ít áp lực 🌿<br>
+    Và thật nhiều niềm vui ✨
+  </p>
+  <button onclick="next()">Còn nữa 😏</button>
+</div>
+
+<div class="box hidden" id="end">
+  <h1>🎬 Plot twist</h1>
+  <p>Quà thật đang trên đường tới chị 🎁</p>
+</div>
+
+<script>
+function start(){
+  document.getElementById("start").classList.add("hidden");
+  document.getElementById("main").classList.remove("hidden");
+
+  document.getElementById("music").play(); // nhạc chạy khi bấm
+
+  for(let i=0;i<25;i++){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="💖";
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDuration=(Math.random()*3+2)+"s";
+    document.body.appendChild(h);
+  }
+}
+
+function next(){
+  document.getElementById("main").classList.add("hidden");
+  document.getElementById("end").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
